@@ -21,7 +21,17 @@ namespace GameZone.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var games = _gamesServices.GetAll();
+            return View(games);
+        }
+        public IActionResult Details(int id)
+        {
+            var game = _gamesServices.GetById(id);
+            if ( game == null)
+            {
+                return NotFound();
+            }
+            return View(game);
         }
         [HttpGet]
         public IActionResult Create()

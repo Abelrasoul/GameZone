@@ -1,6 +1,7 @@
 ﻿
 
 
+
 namespace GameZone.Services
 {
     public class GamesServices : IGamesServices
@@ -14,6 +15,23 @@ namespace GameZone.Services
             _context = context;
             _webHostEnvironment = webHostEnvironment;
             _imagesPath=$"{_webHostEnvironment.WebRootPath}{FileSettings.ImagesPath}";
+        }
+        public Game? GetById(int id)
+        {
+            
+            return _context.Games.
+              Include(g => g.Cateogry).
+              Include(g => g.Device).
+              ThenInclude(d => d.Device).
+              AsNoTracking().
+              SingleOrDefault(g=> g.Id == id);
+        }
+        public IEnumerable<Game> GetAll()
+        {
+            return _context.Games.AsNoTracking().
+                Include(g=>g.Cateogry).
+                Include(g=>g.Device).
+                ThenInclude(d=>d.Device).ToList();
         }
         public async Task Create(CreateGameFormViewModel model)
         {
@@ -35,5 +53,7 @@ namespace GameZone.Services
             _context.Add(game);
             _context.SaveChanges();
         }
+
+       
     }
 }

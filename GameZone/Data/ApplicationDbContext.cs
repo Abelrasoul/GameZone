@@ -1,8 +1,4 @@
-﻿
-
-using GameZone.Models;
-
-namespace GameZone;
+﻿namespace GameZone;
 
 public class ApplicationDbContext : DbContext
 

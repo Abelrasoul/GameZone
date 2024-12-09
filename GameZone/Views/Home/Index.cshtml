@@ -18,11 +18,11 @@
     {
         <div class="col-lg-4 col-md-6 ">
 
-                <a class="card  border-primary  mb-3 text-body-secondary" asp-controller="Games" 
-                asp-action="Details" asp-route-id="@game.Id" >
+                <a class="card  border-primary text-decoration-none rounded-3 overflow-hidden      mb-3 text-body-secondary" asp-controller="Games"
+                   asp-action="Details" asp-route-id="@game.Id" >
                     
                     <div class="card-body" style="background-image:url(@($"{FileSettings.ImagesPath}/{game.Cover} "));height:500px; background-position:center; background:cover;">
-                   <div class="h-100 d-flex align-items-end">
+                   <div class="h-100 d-flex align-items-end h-100">
                        <span class="badge bg-secondary rounded-0 fs-6">@game.Cateogry?.Name</span>
                    </div>
                     </div>

@@ -1,7 +1,7 @@
-﻿    namespace GameZone.Attributes;
+﻿namespace GameZone.Attributes;
 
-    public class AllowedExtensionsAttribute :ValidationAttribute
-    {
+public class AllowedExtensionsAttribute : ValidationAttribute
+{
     private readonly string _allowedExtensions;
     public AllowedExtensionsAttribute(string allowedExtensions)
     {
@@ -14,10 +14,10 @@
         if (file is not null)
         {
             var extension = Path.GetExtension(file.FileName);
-            var IsAllowed=_allowedExtensions.Split(',').Contains(extension,StringComparer.OrdinalIgnoreCase);
+            var IsAllowed = _allowedExtensions.Split(',').Contains(extension, StringComparer.OrdinalIgnoreCase);
             if (!IsAllowed)
             {
-                return new ValidationResult($"Only{_allowedExtensions} are allowed!");    
+                return new ValidationResult($"Only{_allowedExtensions} are allowed!");
             }
         }
         return ValidationResult.Success;
